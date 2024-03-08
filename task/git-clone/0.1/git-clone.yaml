@@ -154,6 +154,8 @@ spec:
     script: |
       #!/usr/bin/env sh
       set -eu
+      
+      echo "CLONE FROM CATALOG"
 
       ca_bundle=/mnt/trusted-ca/ca-bundle.crt
       if [ -f "$ca_bundle" ]; then
