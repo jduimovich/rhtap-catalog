@@ -12,6 +12,10 @@ spec:
       description: Random Param
       name: message
       type: string 
+    - default: "https://github.com/jduimovich/rhtap-catalog.git"
+      name: catalog-url
+    - default: "main"
+      name: catalog-revision
   tasks:
     - name: git-clone
       params:
@@ -24,9 +28,9 @@ spec:
         params: 
         params:
         - name: url
-          value: https://github.com/jduimovich/rhtap-catalog.git
+          value: $(params.catalog-url)
         - name: revision
-          value: main
+          value: $(params.catalog-revision)
         - name: pathInRepo
           value: task/git-clone/0.1/git-clone.yaml 
       workspaces:
@@ -39,6 +43,10 @@ spec:
       taskRef: 
         resolver: git
         params:
+        - name: url
+          value: $(params.catalog-url)
+        - name: revision
+          value: $(params.catalog-revision)
         - name: pathInRepo
           value: task/print-message/0.1/print-message.yaml
       workspaces:
