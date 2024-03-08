@@ -39,10 +39,6 @@ spec:
       taskRef: 
         resolver: git
         params:
-        - name: url
-          value: https://github.com/jduimovich/rhtap-catalog.git
-        - name: revision
-          value: main
         - name: pathInRepo
           value: task/print-message/0.1/print-message.yaml
       workspaces:
