@@ -19,11 +19,16 @@ spec:
           value:  $(params.git-url)
         - name: revision
           value: main
-      taskRef:
+      taskRef: 
         resolver: git
-        params:  
+        params: 
+        params:
+        - name: url
+          value: https://github.com/jduimovich/rhtap-catalog.git
+        - name: revision
+          value: main
         - name: pathInRepo
-          value: task/git-clone/0.1/git-clone.yaml
+          value: task/git-clone/0.1/git-clone.yaml 
       workspaces:
         - name: output
           workspace: workspace
@@ -31,8 +36,15 @@ spec:
       params:
         - name: message
           value:  "hi mom" 
-      taskRef:
-        name: print-message
+      taskRef: 
+        resolver: git
+        params:
+        - name: url
+          value: https://github.com/jduimovich/rhtap-catalog.git
+        - name: revision
+          value: main
+        - name: pathInRepo
+          value: task/print-message/0.1/print-message.yaml
       workspaces:
         - name: output
           workspace: workspace
