@@ -21,7 +21,7 @@ spec:
           value: main
       taskRef:
         resolver: git
-        params:
+        params:  
         - name: pathInRepo
           value: task/git-clone/0.1/git-clone.yaml
       workspaces:
