@@ -1,0 +1,40 @@
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata: 
+  name: git-resolver-test
+spec: 
+  params: 
+    - default: ""
+      description: the url to clone
+      name: git-url
+      type: string 
+    - default: "default message"
+      description: Random Param
+      name: message
+      type: string 
+  tasks:
+    - name: git-clone
+      params:
+        - name: url
+          value:  $(params.git-url)
+        - name: revision
+          value: main
+      taskRef:
+        resolver: git
+        params: 
+        - name: pathInRepo
+          value: task/git-clone/0.1/git-clone.yaml
+
+        name: git-clone 
+      workspaces:
+        - name: output
+          workspace: workspace
+    - name: print-message
+      params:
+        - name: message
+          value:  "hi mom" 
+      taskRef:
+        name: print-message
+      workspaces:
+        - name: output
+          workspace: workspace
